@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   FlatList,
-} from "react-native";
-import userService from "../api/userService";
-import UserList from "../components/UserList";
+} from 'react-native';
+import userService from '../api/userService';
+import UserList from '../components/UserList';
 
-const UsersListScreen = ({ navigation }) => {
+const UsersListScreen = ({navigation}) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [usersApi, setUsersApi] = useState([
@@ -34,9 +34,9 @@ const UsersListScreen = ({ navigation }) => {
     try {
       const usersLoaded = await userService.getUsers();
       setUsersApi(usersLoaded);
-      console.log("api");
+      console.log('api');
       console.log(usersLoaded);
-      console.log("fin api");
+      console.log('fin api');
     } catch (e) {
       setError(true);
     }
@@ -267,7 +267,7 @@ const UsersListScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text>Utilisateurs :</Text>
-      <UserList style={{ flex: 1 }} users={usersApi} navigation={navigation} />
+      <UserList style={{flex: 1}} users={usersApi} navigation={navigation} />
       <TouchableOpacity
         onPress={() => {
           loadjourney();
@@ -282,6 +282,6 @@ export default UsersListScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
   },
 });
