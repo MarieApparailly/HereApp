@@ -1,15 +1,15 @@
-import React from "react";
-import { Text, View, StyleSheet, FlatList } from "react-native";
-import UserItem from "./UserItem";
+import React from 'react';
+import {Text, View, StyleSheet, FlatList} from 'react-native';
+import UserItem from './UserItem';
 
-const UserList = ({ users, navigation }) => {
-  if (users.length > 0)
+const UserList = ({users, navigation}) => {
+  if (users?.length > 0)
     return (
       <View style={styles.container}>
         <FlatList
           data={users}
-          keyExtractor={(user) => user.id}
-          renderItem={({ item }) => (
+          keyExtractor={user => user.id}
+          renderItem={({item}) => (
             <UserItem user={item} navigation={navigation} />
           )}
         />
@@ -18,7 +18,7 @@ const UserList = ({ users, navigation }) => {
   else
     return (
       <View style={styles.container}>
-        <Text style={styles.text}>Nothing yet !</Text>
+        <Text style={styles.text}>bla</Text>
       </View>
     );
 };
@@ -32,8 +32,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   text: {
     fontSize: 16,
