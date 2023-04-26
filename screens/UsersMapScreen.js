@@ -134,9 +134,6 @@ const UsersMapScreen = ({navigation}) => {
 
   return (
     <SafeAreaView style={{flex: 1}}>
-      {/* <View style={styles.container}>
-        <Text>Longitude: {position?.longitude}</Text>
-        <Text>Latitude: {position?.latitude}</Text> */}
       <View style={[{flex: 3}, styles.container]}>
         <MapView
           style={styles.mapStyle}
@@ -157,33 +154,41 @@ const UsersMapScreen = ({navigation}) => {
             title={
               'Tu es à : ' + position?.latitude + ' , ' + position?.longitude
             }
-            //description={'This is a description of the marker'}
+          />
+          <Marker
+            pinColor={'#242333'}
+            draggable
+            coordinate={{
+              latitude: 44.82476,
+              longitude: -0.583644,
+            }}
+            onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
+            title={'Tiphaine Petit'}
+            description={'0745887110'}
+          />
+          <Marker
+            pinColor={'#347139'}
+            draggable
+            coordinate={{
+              latitude: 44.82876,
+              longitude: -0.585644,
+            }}
+            onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
+            title={'Mathys Traversier'}
+            description={'0784556120'}
+          />
+          <Marker
+            pinColor={'#746855'}
+            draggable
+            coordinate={{
+              latitude: 44.80476,
+              longitude: -0.583644,
+            }}
+            onDragEnd={e => alert(JSON.stringify(e.nativeEvent.coordinate))}
+            title={'Clémence Monnier'}
+            description={'0678900043'}
           />
         </MapView>
-        {/* <View style={styles.separator} />
-      <Button
-        onPress={startForegroundUpdate}
-        title="Start in foreground"
-        color="green"
-      />
-      <View style={styles.separator} />
-      <Button
-        onPress={stopForegroundUpdate}
-        title="Stop in foreground"
-        color="red"
-      />
-      <View style={styles.separator} />
-      <Button
-        onPress={startBackgroundUpdate}
-        title="Start in background"
-        color="green"
-      />
-      <View style={styles.separator} />
-      <Button
-        onPress={stopBackgroundUpdate}
-        title="Stop in foreground"
-        color="red"
-      /> */}
       </View>
     </SafeAreaView>
   );

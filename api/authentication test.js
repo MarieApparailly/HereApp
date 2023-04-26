@@ -1,15 +1,12 @@
-// Available users
-// const users = [
-//   { mail: "test@test.fr", password: "test", nickName: "test" },
-//   { mail: "admin@test.fr", password: "admin", nickName: "admin" },
-// ];
+import UserScreen from '../screens/UserScreen';
 
-// const users = [
-//   {pseudo: 'Public', password: 'test'},
-//   {pseudo: 'Marie', password: 'test'},
-// ];
+// Available users
 const users = [
+  {pseudo: 'Marie', password: 'test'},
   {pseudo: 'Public', password: 'test'},
+];
+
+const usersHard = [
   {
     id: 1,
     latitude: null,
@@ -204,8 +201,69 @@ const users = [
 
 // Return null or the authenticated user if login is successful
 export default authenticateUser = (pseudo, password) => {
-  return (
-    // Search for the first user matching login and password
-    users.find(u => u.pseudo === pseudo && u.password === password) || null
-  );
+  return users.find(u => u.pseudo === pseudo && u.password === password);
+
+  // const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState(false);
+  // const [usersApi, setUsersApi] = useState([
+  //   {},
+  //   {},
+  //   {},
+  //   {},
+  //   {},
+  //   {},
+  //   {},
+  //   {},
+  //   {},
+  //   {},
+  // ]);
+  // // const [users, setUsers] = useState([{}, {}, {}, {}, {}, {}, {}, {}, {}, {}]);
+
+  // const loadUsers = async () => {
+  //   setLoading(true);
+  //   setError(false);
+
+  //   try {
+  //     const usersLoaded = await userService.getUsers();
+  //     setUsersApi(usersLoaded);
+  //     console.log('connexion');
+  //     console.log(usersLoaded);
+  //     console.log('fin connexion');
+  //   } catch (e) {
+  //     setError(true);
+  //   }
+  //   setLoading(false);
+  // };
+
+  // useEffect(() => {
+  //   loadUsers();
+  // }, []);
+
+  // if (loading) {
+  //   return (
+  //     <View>
+  //       <ActivityIndicator size="large" />
+  //     </View>
+  //   );
+  // }
+
+  // if (error) {
+  //   return (
+  //     <View>
+  //       <Text>Something went wrong :\</Text>
+  //     </View>
+  //   );
+  // }
+
+  // return (
+  //   // Search for the first user matching login and password
+  //   <UserScreen user={userLogged} />
+  // );
 };
+
+// export default authenticateUser = (mail, password) => {
+//   return (
+//     // Search for the first user matching login and password
+//     users.find(u => u.mail === mail && u.password === password) || null
+//   );
+// };

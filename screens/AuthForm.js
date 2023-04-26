@@ -9,22 +9,22 @@ import {
 } from 'react-native';
 import Input from '../components/Input';
 import authenticateUser from '../api/authentication';
-import UserScreen from './UserScreen';
 
 // The onLoginSuccessful prop is only necessary when linking authentication and module display
-const ConnexionScreen = ({onLoginSuccessful}) => {
+const AuthForm = ({onLoginSuccessful}) => {
   const [pseudo, setPseudo] = useState('');
   const [password, setPassword] = useState('');
 
   const signIn = () => {
     const user = authenticateUser(pseudo, password);
-    console.log(user);
     let msg = user !== null ? 'Connexion réussie' : 'Erreur de connexion';
     msg += ` avec les identifiants : ${pseudo + '/' + password}`;
-    console.log(msg);
     if (user !== null) onLoginSuccessful(user);
     else Alert.alert('Action sélectionnée', msg);
-    // return <UserScreen pseudo={pseudo} password={password} />;
+  };
+
+  const resetPassword = () => {
+    Alert.alert('Action sélectionnée', 'Mise à jour du mot de passe');
   };
 
   const signUp = () => {
@@ -37,16 +37,15 @@ const ConnexionScreen = ({onLoginSuccessful}) => {
         style={styles.formImage}
         source={require('../assets/position.png')}
       />
-      <Text style={styles.title}>HERE</Text>
       <Input
         placeholder="Pseudo"
-        imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfvWW4r98sfhEqdK826pwQKwr4iQ2QBFRP6fnDr0gypNwY82nrZdVNulMSWIIXAJj9bRc&usqp=CAU"
+        imageUrl="https://img.icons8.com/doodle/48/000000/email-sign.png"
         hideCharacters={false}
         onChangeText={text => setPseudo(text)}
       />
       <Input
         placeholder="Mot de passe"
-        imageUrl="https://static.vecteezy.com/ti/vecteur-libre/p3/581808-verrouiller-l-39-icone-illustrationle-gratuit-vectoriel.jpg"
+        imageUrl="https://img.icons8.com/ultraviolet/40/000000/key.png"
         hideCharacters={true}
         onChangeText={text => setPassword(text)}
       />
@@ -55,6 +54,9 @@ const ConnexionScreen = ({onLoginSuccessful}) => {
         onPress={signIn}>
         <Text style={styles.loginText}>Se connecter</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonContainer} onPress={resetPassword}>
+        <Text>Mot de passe oublié ?</Text>
+      </TouchableOpacity>
       <TouchableOpacity style={styles.buttonContainer} onPress={signUp}>
         <Text>S'inscrire</Text>
       </TouchableOpacity>
@@ -62,7 +64,7 @@ const ConnexionScreen = ({onLoginSuccessful}) => {
   );
 };
 
-export default ConnexionScreen;
+export default AuthForm;
 
 const styles = StyleSheet.create({
   container: {
@@ -71,17 +73,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'lightgrey',
   },
-  title: {
-    fontSize: 40,
-    fontFamily: 'Roboto',
-    color: '#CC1E1E',
-    fontWeight: 'bold',
-    marginBottom: 50,
-  },
   formImage: {
-    width: 300,
-    height: 200,
-    //marginBottom: 20,
+    width: 100,
+    height: 100,
+    marginBottom: 20,
   },
   buttonContainer: {
     height: 45,
@@ -92,7 +87,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
   },
   signInButton: {
-    backgroundColor: '#B14242',
+    backgroundColor: 'skyblue',
   },
   loginText: {
     color: 'white',
